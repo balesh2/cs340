@@ -26,13 +26,13 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="index.html">Sign Up</a></li>
+        <li><a href="index.html">Sign Up</a></li>
         <li><a href="signinform.html">Sign In</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="help.html">Help</a></li>
         <li><a href="todo.php">My TODO List</a></li>
-        <li><a href="addcourse.php">Add New Class</a></li>
+        <li class="active"><a href="addcourse.php">Add New Class</a></li>
         <li><a href="addassignment.php">Add New Assignment</a></li>
 	<li><a href="viewcomplete.php">View Completed Items</a></li>
       </ul>
@@ -44,26 +44,17 @@
    <div class="row">
       <div class="col-xs-1"></div>
       <div class="col-xs-10">
-	 <h1>Sign Up</h1>
+	 <h1>Add New Course</h1>
 
-	 <form action="studentinformation.php" method="post">
-	    Student ID Number: <input type="text" name="sid"><br>
-	    First Name: <input type="text" name="first_name"><br>
-	    Last Name: <input type="text" name="last_name"><br>
+	 <form action="newclass.php" method="post">
+	    Class Code: <input type="text" name="class_code"><br>
+	    Name: <input type="text" name="name"><br>
+	    Your Student ID: <input type="int" name="sid"><br>
 	    <input type="submit">
 	 </form>
       </div>
       <div class="col-xs-1"></div>
    </div>
-
-   <div class="row">
-      <div class="col-xs-1"></div>
-      <div class="col-xs-10">
-	 <a href="./signinform.php">Sign In</a>
-      </div>
-      <div class="col-xs-1"></div>
-   </div>
-
 </div>
       
 <!-- Latest compiled and minified JavaScript -->

@@ -13,14 +13,14 @@ if ($connection->connect_error) {
 
 //escape user inputs for security
 $sid = mysqli_real_escape_string($connection, $_POST['sid']);
-$first_name = mysqli_real_escape_string($connection, $_POST['first_name']);
-$last_name = mysqli_real_escape_string($connection, $_POST['last_name']);
+$name = mysqli_real_escape_string($connection, $_POST['name']);
+$class_code = mysqli_real_escape_string($connection, $_POST['class_code']);
 
-$sql = "INSERT INTO Student (sid, first_name, last_name)
-   VALUES('$sid', '$first_name', '$last_name')";
+$sql = "INSERT INTO Class (class_code, name, sid)
+   VALUES('$class_code', '$name', '$sid')";
 
 if ($connection->query($sql) == TRUE) {
-   echo "Welcome " . $first_name . " " . $last_name . "!<br>";
+   echo "Class Added Successfully!";
 } else {
    echo "ERROR: " . $sql . "<br>" . $connection->error;
 }
@@ -56,39 +56,29 @@ $connection->close();
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="index.html">Sign Up</a></li>
+        <li><a href="index.html">Sign Up</a></li>
         <li><a href="signinform.html">Sign In</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="help.html">Help</a></li>
         <li><a href="todo.php">My TODO List</a></li>
-        <li><a href="addcourse.php">Add New Class</a></li>
+        <li class="active"><a href="addcourse.php">Add New Class</a></li>
         <li><a href="addassignment.php">Add New Assignment</a></li>
 	<li><a href="viewcomplete.php">View Completed Items</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-
+		<div class="container">
 		<div class="row">
 		<div class="col-xs-1"></div>
 		<div class="col-xs-10">
-			<h1>My To-Do List</h1>
-			<a href="./addclass.php">Add a Course</a>
-			<br>
-			<a href="./addassignment.html">Add an Assignment</a>
+			<h1>Class Added Successfully</h1>
+			<a href="./todolist.php">View My Todo List</a>
 		</div>
 		<div class="col-xs-1"></div>
 		</div>
 
-		<div class="row">
-		<div class="col-xs-1"></div>
-		<div class="col-xs-10">
-			<table>
-				<td></td>
-			</table>
-		</div>
-		<div class="col-xs-1"></div>
 		</div>
 	</body>
 </html>

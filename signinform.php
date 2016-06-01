@@ -9,7 +9,6 @@
 </head>
 
 <body>
-
 <nav class="navbar navbar-default">
 <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -26,8 +25,8 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="index.html">Sign Up</a></li>
-        <li><a href="signinform.html">Sign In</a></li>
+        <li><a href="index.html">Sign Up</a></li>
+        <li class="active"><a href="signinform.html">Sign In</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="help.html">Help</a></li>
@@ -44,9 +43,9 @@
    <div class="row">
       <div class="col-xs-1"></div>
       <div class="col-xs-10">
-	 <h1>Sign Up</h1>
+	 <h1>Sign In</h1>
 
-	 <form action="studentinformation.php" method="post">
+	 <form action="signin.php" method="post">
 	    Student ID Number: <input type="text" name="sid"><br>
 	    First Name: <input type="text" name="first_name"><br>
 	    Last Name: <input type="text" name="last_name"><br>
@@ -59,7 +58,7 @@
    <div class="row">
       <div class="col-xs-1"></div>
       <div class="col-xs-10">
-	 <a href="./signinform.php">Sign In</a>
+	 <a href="index.html">Sign Up</a>
       </div>
       <div class="col-xs-1"></div>
    </div>

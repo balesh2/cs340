@@ -16,8 +16,8 @@ $sid = mysqli_real_escape_string($connection, $_POST['sid']);
 $first_name = mysqli_real_escape_string($connection, $_POST['first_name']);
 $last_name = mysqli_real_escape_string($connection, $_POST['last_name']);
 
-$sql = "INSERT INTO Student (sid, first_name, last_name)
-   VALUES('$sid', '$first_name', '$last_name')";
+$sql = "SELECT DISTINCT '$sid' FROM Student
+   WHERE Student.sid = '$sid' AND Student.first_name =  '$first_name' AND Student.last_name = '$last_name'";
 
 if ($connection->query($sql) == TRUE) {
    echo "Welcome " . $first_name . " " . $last_name . "!<br>";
@@ -56,8 +56,8 @@ $connection->close();
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="index.html">Sign Up</a></li>
-        <li><a href="signinform.html">Sign In</a></li>
+        <li><a href="index.html">Sign Up</a></li>
+        <li class="active"><a href="signinform.html">Sign In</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="help.html">Help</a></li>
@@ -70,6 +70,7 @@ $connection->close();
   </div><!-- /.container-fluid -->
 </nav>
 
+		<div class="container">
 		<div class="row">
 		<div class="col-xs-1"></div>
 		<div class="col-xs-10">
@@ -89,6 +90,7 @@ $connection->close();
 			</table>
 		</div>
 		<div class="col-xs-1"></div>
+		</div>
 		</div>
 	</body>
 </html>

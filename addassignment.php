@@ -26,14 +26,14 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="index.html">Sign Up</a></li>
+        <li><a href="index.html">Sign Up</a></li>
         <li><a href="signinform.html">Sign In</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="help.html">Help</a></li>
         <li><a href="todo.php">My TODO List</a></li>
         <li><a href="addcourse.php">Add New Class</a></li>
-        <li><a href="addassignment.php">Add New Assignment</a></li>
+        <li class="active"><a href="addassignment.php">Add New Assignment</a></li>
 	<li><a href="viewcomplete.php">View Completed Items</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
@@ -44,22 +44,16 @@
    <div class="row">
       <div class="col-xs-1"></div>
       <div class="col-xs-10">
-	 <h1>Sign Up</h1>
+	 <h1>Add New Assignment</h1>
 
-	 <form action="studentinformation.php" method="post">
-	    Student ID Number: <input type="text" name="sid"><br>
-	    First Name: <input type="text" name="first_name"><br>
-	    Last Name: <input type="text" name="last_name"><br>
+	 <form action="newassignment.php" method="post">
+	    Title: <input type="text" name="title"><br>
+	    Description: <input type="text" name="description"><br>
+	    Estimated Time to Complete: <input type="time" name="est_time"><br>
+	    Due Date: <input type="datetime" name="due_date"><br>
+	    Class: <input type="text" name="class"><br>
 	    <input type="submit">
 	 </form>
-      </div>
-      <div class="col-xs-1"></div>
-   </div>
-
-   <div class="row">
-      <div class="col-xs-1"></div>
-      <div class="col-xs-10">
-	 <a href="./signinform.php">Sign In</a>
       </div>
       <div class="col-xs-1"></div>
    </div>
