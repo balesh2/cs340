@@ -32,7 +32,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a href="help.html">Help</a></li>
         <li><a href="todo.php">My TODO List</a></li>
-        <li><a href="addcourse.php">Add New Class</a></li>
+        <li><a href="addclass.php">Add New Class</a></li>
         <li class="active"><a href="addassignment.php">Add New Assignment</a></li>
 	<li><a href="viewcomplete.php">View Completed Items</a></li>
       </ul>
@@ -46,12 +46,13 @@
       <div class="col-xs-10">
 	 <h1>Add New Assignment</h1>
 
-	 <form action="newassignment.php" method="post">
+	 <form action="assignmentsuccess.php" method="post">
 	    Title: <input type="text" name="title"><br>
 	    Description: <input type="text" name="description"><br>
 	    Estimated Time to Complete: <input type="time" name="est_time"><br>
 	    Due Date: <input type="datetime" name="due_date"><br>
 	    Class: <input type="text" name="class"><br>
+	    SID: <input type="text" name="sid"><br>
 	    <input type="submit">
 	 </form>
       </div>

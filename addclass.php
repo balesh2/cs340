@@ -32,7 +32,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a href="help.html">Help</a></li>
         <li><a href="todo.php">My TODO List</a></li>
-        <li class="active"><a href="addcourse.php">Add New Class</a></li>
+        <li class="active"><a href="addclass.php">Add New Class</a></li>
         <li><a href="addassignment.php">Add New Assignment</a></li>
 	<li><a href="viewcomplete.php">View Completed Items</a></li>
       </ul>
@@ -46,7 +46,7 @@
       <div class="col-xs-10">
 	 <h1>Add New Course</h1>
 
-	 <form action="newclass.php" method="post">
+	 <form action="classsuccess.php" method="post">
 	    Class Code: <input type="text" name="class_code"><br>
 	    Name: <input type="text" name="name"><br>
 	    Your Student ID: <input type="int" name="sid"><br>

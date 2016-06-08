@@ -13,16 +13,10 @@ if ($connection->connect_error) {
    die("Connection failed: " . $connection->connect_error);
 }
 
-//escape user inputs for security
-$sid = mysqli_real_escape_string($connection, $_POST['sid']);
-$name = mysqli_real_escape_string($connection, $_POST['name']);
-$class_code = mysqli_real_escape_string($connection, $_POST['class_code']);
-
-$sql = "INSERT INTO Class (class_code, name, sid)
-   VALUES('$class_code', '$name', '$sid')";
+$sql = "SELECT Assignment.id, Assignment.due_date, Assignment.class, Assignment.title, Assignment.description, Assignment.est_time, Assignment.act_time FROM Assignment WHERE Assignment.completed = TRUE AND Assignment.SID =" . $_SESSION["sessid"];
 
 if ($connection->query($sql) == TRUE) {
-   echo "Class Added Successfully!";
+   $result = $connection->query($sql);
 } else {
    echo "ERROR: " . $sql . "<br>" . $connection->error;
 }
@@ -31,7 +25,7 @@ $connection->close();
 ?>
 
 <html>
-	<head>
+<head>
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -40,8 +34,9 @@ $connection->close();
 
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-	</head>
-	<body>
+</head>
+
+<body>
 <nav class="navbar navbar-default">
 <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -64,23 +59,50 @@ $connection->close();
       <ul class="nav navbar-nav navbar-right">
         <li><a href="help.html">Help</a></li>
         <li><a href="todo.php">My TODO List</a></li>
-        <li class="active"><a href="addcourse.php">Add New Class</a></li>
+        <li><a href="addclass.php">Add New Class</a></li>
         <li><a href="addassignment.php">Add New Assignment</a></li>
-	<li><a href="viewcomplete.php">View Completed Items</a></li>
+	<li class="active"><a href="viewcompleted.php">View Completed Items</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-		<div class="container">
-		<div class="row">
-		<div class="col-xs-1"></div>
-		<div class="col-xs-10">
-			<h1>Class Added Successfully</h1>
-			<a href="./todolist.php">View My Todo List</a>
-		</div>
-		<div class="col-xs-1"></div>
-		</div>
 
-		</div>
-	</body>
-</html>
+<div class="container-fluid">
+<div class="row">
+<div class="col-xs-1"></div>
+<div class="col-xs-10">
+<h1> My Completed Assignments</h1>
+</div>
+<div class="col-xs-1"></div>
+</div>
+
+<div class="row">
+<div class="col-xs-1"></div>
+<div class="col-xs-10">
+<table class="table">
+<thead>
+<tr>
+<th>Due Date</th>
+<th>Class</th>
+<th>Title</th>
+<th>Description</th>
+<th>Estimated Time</th>
+<th>Actual Time</th>
+<th>Mark As TODO</th>
+</tr>
+</thead>
+<tbody>
+</div>
+<div class="col-xs-1"></div>
+</div>
+
+</div>
+
+<?php
+while($row = $result->fetch_assoc()) {
+   echo "<tr><td>" . $row["due_date"] . "</td><td>" . $row["class"] . "</td><td>" . $row["title"] . "</td><td>" . $row["description"] . "</td><td>" . $row["est_time"] . "</td><td>" . $row["act_time"] . "</td><td>" . "<form action='marktodo.php' method='post'><input type='hidden' name='pid' value=" . $row["id"] . "><input type='submit' value='Mark as TODO'></form>" . "</td></tr>";
+}
+$connection->close();
+?>
+</tbody>
+</table>

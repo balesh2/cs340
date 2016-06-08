@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <?php
 $servername = "mysql.cs.orst.edu";
 $username = "cs340_balesh";
@@ -17,9 +19,10 @@ $description = mysqli_real_escape_string($connection, $_POST['description']);
 $est_time = mysqli_real_escape_string($connection, $_POST['est_time']);
 $due_date = mysqli_real_escape_string($connection, $_POST['due_date']);
 $class = mysqli_real_escape_string($connection, $_POST['class']);
+$sid = mysqli_real_escape_string($connection, $_POST['sid']);
 
-$sql = "INSERT INTO Assignment (title, description, est_time, due_date, class)
-   VALUES('$title', '$description', '$est_time', '$due_date', '$class')";
+$sql = "INSERT INTO Assignment (title, description, est_time, due_date, class, SID)
+   VALUES('$title', '$description', '$est_time', '$due_date', '$class', $sid)";
 
 if ($connection->query($sql) == TRUE) {
    echo "Class Added Successfully!";
@@ -64,7 +67,7 @@ $connection->close();
       <ul class="nav navbar-nav navbar-right">
         <li><a href="help.html">Help</a></li>
         <li><a href="todo.php">My TODO List</a></li>
-        <li><a href="addcourse.php">Add New Class</a></li>
+        <li><a href="addclass.php">Add New Class</a></li>
         <li class="active"><a href="addassignment.php">Add New Assignment</a></li>
 	<li><a href="viewcomplete.php">View Completed Items</a></li>
       </ul>

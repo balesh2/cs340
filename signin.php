@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php
 $servername = "mysql.cs.orst.edu";
 $username = "cs340_balesh";
@@ -24,6 +25,8 @@ if ($connection->query($sql) == TRUE) {
 } else {
    echo "ERROR: " . $sql . "<br>" . $connection->error;
 }
+
+$_SESSION["sessid"] = $sid;
 
 $connection->close();
 ?>
@@ -62,9 +65,9 @@ $connection->close();
       <ul class="nav navbar-nav navbar-right">
         <li><a href="help.html">Help</a></li>
         <li><a href="todo.php">My TODO List</a></li>
-        <li><a href="addcourse.php">Add New Class</a></li>
+        <li><a href="addclass.php">Add New Class</a></li>
         <li><a href="addassignment.php">Add New Assignment</a></li>
-	<li><a href="viewcomplete.php">View Completed Items</a></li>
+	<li><a href="viewcompleted.php">View Completed Items</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -74,7 +77,13 @@ $connection->close();
 		<div class="row">
 		<div class="col-xs-1"></div>
 		<div class="col-xs-10">
-			<h1>My To-Do List</h1>
+			<h1>Dashboard</h1>
+			<a href="./todo.php">My TODO List</a>
+			<br>
+			<a href="./viewclasses.php">My Classes</a>
+			<br>
+			<a href="./viewcompleted.php">My Completed Assignments</a>
+			<br>
 			<a href="./addclass.php">Add a Course</a>
 			<br>
 			<a href="./addassignment.html">Add an Assignment</a>

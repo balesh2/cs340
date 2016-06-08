@@ -14,15 +14,11 @@ if ($connection->connect_error) {
 }
 
 //escape user inputs for security
-$sid = mysqli_real_escape_string($connection, $_POST['sid']);
-$name = mysqli_real_escape_string($connection, $_POST['name']);
-$class_code = mysqli_real_escape_string($connection, $_POST['class_code']);
+$id = mysqli_real_escape_string($connection, $_POST['pid']);
 
-$sql = "INSERT INTO Class (class_code, name, sid)
-   VALUES('$class_code', '$name', '$sid')";
+$sql = "UPDATE Assignment SET completed=FALSE WHERE id='$id'";
 
 if ($connection->query($sql) == TRUE) {
-   echo "Class Added Successfully!";
 } else {
    echo "ERROR: " . $sql . "<br>" . $connection->error;
 }
@@ -64,23 +60,23 @@ $connection->close();
       <ul class="nav navbar-nav navbar-right">
         <li><a href="help.html">Help</a></li>
         <li><a href="todo.php">My TODO List</a></li>
-        <li class="active"><a href="addcourse.php">Add New Class</a></li>
+        <li><a href="addclass.php">Add New Class</a></li>
         <li><a href="addassignment.php">Add New Assignment</a></li>
-	<li><a href="viewcomplete.php">View Completed Items</a></li>
+	<li><a href="viewcompleted.php">View Completed Items</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-		<div class="container">
-		<div class="row">
-		<div class="col-xs-1"></div>
-		<div class="col-xs-10">
-			<h1>Class Added Successfully</h1>
-			<a href="./todolist.php">View My Todo List</a>
-		</div>
-		<div class="col-xs-1"></div>
-		</div>
 
-		</div>
-	</body>
+<div class="container">
+<div class="row">
+<div class="col-xs-1"></div>
+<div class="col-xs-10">
+<h1>Marked as TODO!</h1>
+<br>
+<a href="viewcompleted.php">Return to Completed List</a>
+</div>
+<div class="col-xs-1"></div>
+</div>
+</div>
 </html>
